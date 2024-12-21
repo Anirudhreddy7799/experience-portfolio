@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/experience-portfolio/",
+  base: mode === 'development' ? '/' : '/experience-portfolio/',
   build: {
     outDir: "dist",
     assetsDir: "assets",
@@ -19,8 +19,9 @@ export default defineConfig(({ mode }) => ({
     },
   },
   server: {
-    host: "::",
+    host: "localhost",
     port: 8080,
+    open: true, // This will automatically open your default browser
   },
   plugins: [
     react(),
